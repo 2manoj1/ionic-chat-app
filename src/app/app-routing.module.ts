@@ -3,9 +3,10 @@ import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 
 const routes: Routes = [
   {
-    path: '',
-    loadChildren: () => import('./tabs/tabs.module').then(m => m.TabsPageModule)
-  }
+    path: 'workspaces',
+    loadChildren: () => import('./workspaces/workspaces.module').then( m => m.WorkspacesPageModule)
+  },
+  { path: '', redirectTo: 'workspaces', pathMatch: 'full' }
 ];
 @NgModule({
   imports: [
