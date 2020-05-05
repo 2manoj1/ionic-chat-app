@@ -19,7 +19,7 @@
       
           <ion-item *virtualItem="let item; let itemBounds = bounds;">
               <ion-avatar slot="start">
-                <img [src]="item?.picture?.thumbnail" [alt]="itme?.name?.first" />
+                <img [src]="item?.picture?.thumbnail" [alt]="item?.name?.first" />
               </ion-avatar>
          <ion-label>{{ item?.name?.first }}</ion-label>
           </ion-item>
@@ -39,7 +39,7 @@
         <ion-virtual-scroll [items]="users" approxItemHeight="80px">
           <ion-item *virtualItem="let item; let itemBounds = bounds;">
               <ion-avatar slot="start">
-                <img [src]="item?.picture?.thumbnail" [alt]="itme?.name?.first" />
+                <img [src]="item?.picture?.thumbnail" [alt]="item?.name?.first" />
               </ion-avatar>
          <div>{{ item?.name?.first }}</div>
           </ion-item>
