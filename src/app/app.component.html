@@ -1,3 +1,58 @@
 <ion-app>
-  <ion-router-outlet></ion-router-outlet>
+  <ion-split-pane contentId="main" when="md" [disabled]="isPaneDisble">
+    <ion-menu contentId="main" side="start">
+      <ion-toolbar>
+        <ion-item>
+          
+        <ion-label>Workspace Name</ion-label>
+          <ion-avatar slot="end">
+            <img src="https://i.picsum.photos/id/155/200/200.jpg" />
+          </ion-avatar>
+          </ion-item>
+      </ion-toolbar>
+        
+      <ion-list-header>
+        <ion-label>CHANNELS</ion-label>
+      </ion-list-header>
+      <ion-content class="ion-padding-bottom">
+        <ion-virtual-scroll [items]="channels" approxItemHeight="80px">
+      
+          <ion-item *virtualItem="let item; let itemBounds = bounds;">
+              <ion-avatar slot="start">
+                <img [src]="item?.picture?.thumbnail" [alt]="item?.name?.first" />
+              </ion-avatar>
+         <ion-label>{{ item?.name?.first }}</ion-label>
+          </ion-item>
+        </ion-virtual-scroll>
+      
+        <ion-infinite-scroll threshold="20%" (ionInfinite)="loadDataChannels($event)">
+          <ion-infinite-scroll-content
+            loadingSpinner="bubbles"
+            loadingText="Loading more data...">
+          </ion-infinite-scroll-content>
+        </ion-infinite-scroll>
+      </ion-content>
+      <ion-list-header>
+        <ion-label>CHATS</ion-label>
+      </ion-list-header>
+      <ion-content>
+        <ion-virtual-scroll [items]="users" approxItemHeight="80px">
+          <ion-item *virtualItem="let item; let itemBounds = bounds;">
+              <ion-avatar slot="start">
+                <img [src]="item?.picture?.thumbnail" [alt]="item?.name?.first" />
+              </ion-avatar>
+         <div>{{ item?.name?.first }}</div>
+          </ion-item>
+        </ion-virtual-scroll>
+      
+        <ion-infinite-scroll threshold="20%" (ionInfinite)="loadDataUsers($event)">
+          <ion-infinite-scroll-content
+            loadingSpinner="bubbles"
+            loadingText="Loading more data...">
+          </ion-infinite-scroll-content>
+        </ion-infinite-scroll>
+      </ion-content>
+    </ion-menu>
+    <ion-router-outlet id="main"></ion-router-outlet>
+  </ion-split-pane>
 </ion-app>
